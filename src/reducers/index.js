@@ -1,10 +1,8 @@
-import { combineReducers } from "redux";
 import _ from "lodash";
 
 const initialState = {
-
+  dailyChallenge: "Eat a Dick",
   hasErrored: "No Errors ☺"
-
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,8 +13,5 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const rootReducer = combineReducers({
-  titles: reducer
-});
 
-export default rootReducer;
+export default reducer;
