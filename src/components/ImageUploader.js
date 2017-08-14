@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import sha1 from "sha1";
 import superagent from "superagent";
+import { updateImages } from "../actions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-export default class ImageUploader extends Component {
+class ImageUploader extends Component {
   uploadFile(files) {
-    console.log("files ", files);
     const image = files[0];
     const cloudName = "keezee";
     const API_SECRET = "MPfnC3smU0G-vHs-GC2YBZHz0Ww";
@@ -24,7 +26,6 @@ export default class ImageUploader extends Component {
 
     let uploadRequest = superagent.post(URL);
     uploadRequest.attach("file", image);
-
     Object.keys(params).forEach(key => {
       uploadRequest.field(key, params[key]);
     });
@@ -33,11 +34,30 @@ export default class ImageUploader extends Component {
       if (err) {
         return err;
       }
-      console.log("UPLOAD FILE", JSON.stringify(response.body));
+      let uploaded = response.body;
+      this.props.updateImages(uploaded);
     });
   }
 
+  let 
+
   render() {
-    return <Dropzone onDrop={this.uploadFile.bind(this)} />;
+    return (
+      <div>
+        <div className="uplaod">
+          <Dropzone onDrop={this.uploadFile.bind(this)} />
+        </div>
+      </div>
+    );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ updateImages }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageUploader);

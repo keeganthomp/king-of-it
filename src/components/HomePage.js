@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ImageUploader from './ImageUploader';
+import ImageDisplay from './ImageDisplay';
 
 class HomePage extends Component {
   render() {
@@ -11,6 +12,7 @@ class HomePage extends Component {
           {this.props.dailyChallenge}
         </h3>
         <ImageUploader/>
+        <ImageDisplay/>
       </div>
     );
   }
