@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { getInitialImages } from "../actions";
 
 
+
 class ImageDisplay extends Component {
   componentWillMount() {
     this.props.getInitialImages();

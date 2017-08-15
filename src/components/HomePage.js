@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import ImageUploader from './ImageUploader';
 import ImageDisplay from './ImageDisplay';
 
+
 class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>Challenge.Me</h1>
+        <h1 className="typewriter">Challenge.Me</h1>
         <h3>
-          {this.props.dailyChallenge}
+          {this.props.dailyChallenge} | 40pts
         </h3>
         <ImageUploader/>
         <ImageDisplay/>

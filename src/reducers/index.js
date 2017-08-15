@@ -2,7 +2,7 @@ import _ from "lodash";
 import { UPDATE_IMAGES, INITIAL_IMAGES, GET_ERRORS } from "../actions";
 
 const initialState = {
-  dailyChallenge: "Eat a Dick",
+  dailyChallenge: "The Daily Challenge",
   images: [],
   hasErrored: "No Errors ☺"
 };
