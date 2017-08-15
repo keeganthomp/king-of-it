@@ -1,3 +1,6 @@
+import axios from "axios";
+
+
 export const UPDATE_IMAGES = "UPDATE_IMAGES";
 export const GET_ERRORS = "GET_ERRORS";
 export const INITIAL_IMAGES = "INITIAL_IMAGES";
@@ -25,18 +28,15 @@ let getErrors = err => {
 
 export let getInitialImages = images => {
   return dispatch => {
-    fetch(
-      `https://139167162543316:MPfnC3smU0G-vHs-GC2YBZHz0Ww@api.cloudinary.com/v1_1/keezee/resources/image`, {mode: 'no-cors'}
-    )
+    axios
+      .get(`https://139167162543316:MPfnC3smU0G-vHs-GC2YBZHz0Ww@api.cloudinary.com/v1_1/keezee/resources/image`, {
+        headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" }
+      })
       .then(response => {
-      console.log("response ", response);
+        console.log("response ", response);
         return response.json();
       })
-      .then(images => {
-      console.log("images ", images);
-        dispatch(initialImages(images));
-      })
-      .catch(err => dispatch(getErrors(err)));
-      console.log("ERRRORRRR")
+      .catch(err => console.log(err));
+    console.log("ERRRORRRR");
   };
 };

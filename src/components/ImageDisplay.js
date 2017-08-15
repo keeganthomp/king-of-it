@@ -3,20 +3,35 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getInitialImages } from "../actions";
 
+
 class ImageDisplay extends Component {
   componentWillMount() {
     this.props.getInitialImages();
   }
   render() {
+
+    let imgStyle = {
+        width: "30%",
+        height: "33%",
+        margin: "5px"
+    }
+
+    let imgContainer = {
+        margin: "5%",
+        display: "flex",
+        alignItems: "baseline",
+        flexWrap: "wrap",
+        justifyContent: "space-around"
+    }
+
     let images = this.props.images.map((e, i) => {
       return (
-        <div className="image" key={i}>
-          {e.secure_url}
-        </div>
+          <img style={imgStyle} src={e.secure_url} alt={i}/>
+    
       );
     });
     return (
-      <div className="imageContainer">
+      <div style={imgContainer}>
         {images}
       </div>
     );

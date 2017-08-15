@@ -44,7 +44,7 @@ class ImageUploader extends Component {
   render() {
     return (
       <div>
-        <div className="uplaod">
+        <div className="upload">
           <Dropzone onDrop={this.uploadFile.bind(this)} />
         </div>
       </div>
