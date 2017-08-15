@@ -51,3 +51,13 @@
   from, to { border-color: transparent }
   50% { border-color: white }
 }
+
+.upload {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.upload:hover {
+  cursor: pointer;
+  opacity: .5
+}

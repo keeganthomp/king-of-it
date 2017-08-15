@@ -39,13 +39,20 @@ class ImageUploader extends Component {
     });
   }
 
-  let 
-
   render() {
+    let uploadContent = {
+        marginTop: '5%',
+        fontSize: '10rem',
+        color: "black"
+    };
     return (
       <div>
         <div className="upload">
-          <Dropzone onDrop={this.uploadFile.bind(this)} />
+          <Dropzone onDrop={this.uploadFile.bind(this)}>
+            <div style={uploadContent}>
+              +
+            </div>
+          </Dropzone>
         </div>
       </div>
     );
