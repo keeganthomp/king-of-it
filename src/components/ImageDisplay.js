@@ -18,7 +18,7 @@ class ImageDisplay extends Component {
     }
 
     let imgContainer = {
-        margin: "5%",
+        margin: "2%",
         display: "flex",
         alignItems: "baseline",
         flexWrap: "wrap",
