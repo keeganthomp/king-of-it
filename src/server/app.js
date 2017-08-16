@@ -6,12 +6,12 @@ const path = require("path");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/", express.static("../../public/"));
-app.set("views", "/public");
-app.set("view engine", "html");
+// Serve static assets
+app.use(express.static(path.resolve(__dirname, "../../", "build")));
 
-app.use((req, res) => {
-  res.sendFile(path.resolve("./public/index.html"));
+// Always return the main index.html, so react-router render the route in the client
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../../", "build", "index.html"));
 });
 
 app.listen(5000, () => {
