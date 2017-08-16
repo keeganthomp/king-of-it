@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getInitialImages } from "../actions";
+// import { getInitialImages } from "../actions";
 
 
 
 class ImageDisplay extends Component {
-  componentWillMount() {
-    this.props.getInitialImages();
-  }
+  // componentWillMount() {
+  //   this.props.getInitialImages();
+  // }
   render() {
 
     let imgStyle = {
@@ -44,7 +44,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({getInitialImages}, dispatch);
+  // return bindActionCreators({getInitialImages}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageDisplay);
