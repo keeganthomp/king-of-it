@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-// import { getInitialImages } from "../actions";
+
 
 class ImageDisplay extends Component {
   componentWillMount() {
     console.log("MOUTNINGGGGGG");
-    fetch("/api/images")
+    fetch("http://localhost:7000/api/images")
       .then(response => response.json())
       .then(images => console.log(":::::::", images));
   }

@@ -1,4 +1,3 @@
-import axios from "axios";
 
 export const UPDATE_IMAGES = "UPDATE_IMAGES";
 export const GET_ERRORS = "GET_ERRORS";
@@ -11,14 +10,14 @@ export let updateImages = image => {
   };
 };
 
-let initialImages = images => {
+export let initialImages = images => {
   return {
     type: INITIAL_IMAGES,
     payload: images
   };
 };
 
-let getErrors = err => {
+export let getErrors = err => {
   return {
     type: GET_ERRORS,
     payload: err
