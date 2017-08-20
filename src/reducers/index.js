@@ -4,7 +4,7 @@ import { UPDATE_IMAGES, INITIAL_IMAGES, GET_ERRORS } from "../actions";
 const initialState = {
   dailyChallenge: "The Daily Challenge",
   images: [],
-  hasErrored: "No Errors ☺"
+  hasErrored: undefined
 };
 
 const reducer = (state = initialState, action) => {
