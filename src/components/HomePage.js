@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ImageUploader from './ImageUploader';
 import ImageDisplay from './ImageDisplay';
+import "../styles/App.css";
+
 
 
 class HomePage extends Component {

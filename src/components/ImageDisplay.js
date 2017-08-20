@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { initialImages, getErrors } from "../actions/";
+import "../styles/index.css";
+
 
 class ImageDisplay extends Component {
   componentWillMount() {
