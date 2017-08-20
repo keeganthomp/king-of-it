@@ -15,4 +15,4 @@ cloudinaryApi.get("/images", (req, res) => {
     .catch(err => console.log(err));
 });
 
-module.exports = api;
+module.exports = cloudinaryApi;
