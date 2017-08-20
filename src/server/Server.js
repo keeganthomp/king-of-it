@@ -4,7 +4,14 @@ const axios = require('axios');
 const cors = require('cors')
 const apiRoutes = require('./apiRoutes')
 const authRoutes = require('./authRoutes');
+const mongo = require('mongodb');
+const assert = require('assert')
+const bodyParser = require("body-parser");
 
+
+const url = "mongodb://localhost:27017/tester"
+
+server.use(bodyParser.urlencoded({ extended: false }));
 server.use(cors());
 
 server.use('/api', apiRoutes)
