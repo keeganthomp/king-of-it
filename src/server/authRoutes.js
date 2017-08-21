@@ -34,7 +34,7 @@ auth.post("/signup", (req, res) => {
   };
   console.log("REQ>BODYYY:", req.body);
   mongo.connect(url, (err, db) => {
-    assert.equal(null, err);
+    assert.equal(null, err);`
     db.collection("user-data").insertOne(user, err => {
       assert.equal(null, err);
       console.log("user inserted");
