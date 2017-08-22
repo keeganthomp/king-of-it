@@ -27,20 +27,17 @@ class ImageDisplay extends Component {
       justifyContent: "space-around"
     };
 
-    console.log("THIS>PROPPPSSSS", this.props);
 
     if (this.props.errors) {
-      console.log("::::::::", this.props.errors);
       return (
         <div>
           <h1>
-            sorry this page has {this.props.errors}
+            sorry this page has rendered the following errors: {this.props.errors}
           </h1>
         </div>
       );
     } else {
       let images = this.props.images.map((e, i) => {
-        console.log("GFGDGSDFGSDFGSDFGSDFG");
         return <img key={i} style={imgStyle} src={e.secure_url} alt={i} />;
       });
       return (
