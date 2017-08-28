@@ -4,7 +4,6 @@ import sha1 from "sha1";
 import superagent from "superagent";
 import { updateImages } from "../actions";
 import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
 
 class ImageUploader extends Component {
   uploadFile(files) {
@@ -62,10 +61,6 @@ class ImageUploader extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {};
 };
-
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators({ updateImages }, dispatch);
-// };
 
 const mapDispatchToProps = dispatch => ({
   updateImages

@@ -21,7 +21,7 @@ auth.get("/users", (req, res) => {
         res.send({
           userArray: userArray
         });
-        console.log("USERRR DATA:", userArray);
+        console.log("USER DATA:", userArray);
       }
     );
   });
@@ -32,9 +32,9 @@ auth.post("/signup", (req, res) => {
     username: req.body.username,
     password: req.body.password
   };
-  console.log("REQ>BODYYY:", req.body);
+  console.log("REQ BODYYY:", req.body);
   mongo.connect(url, (err, db) => {
-    assert.equal(null, err);`
+    assert.equal(null, err);
     db.collection("user-data").insertOne(user, err => {
       assert.equal(null, err);
       console.log("user inserted");
