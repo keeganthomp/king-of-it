@@ -38,10 +38,32 @@ auth.post("/signup", (req, res) => {
     db.collection("user-data").insertOne(user, err => {
       assert.equal(null, err);
       console.log("user inserted");
+      console.log("REQ SESSIONNN::::::", req.session);
       db.close();
     });
   });
   res.redirect("http://localhost:5000/");
+});
+
+auth.post("/login", (req, res) => {
+  let user = {
+    username: req.body.loginUsername,
+    password: req.body.loginPassword
+  };
+  console.log("LOGIN REQ BODYYY:", req.body);
+  mongo.connect(url, (err, db) => {
+    assert.equal(null, err);
+    db.collection("user-data").findOne({
+      username: user.username,
+      password: user.password
+    }, (err, user) => {
+      if (!user) {
+        res.send("DOESNT EXISTTT");
+      } else {
+        res.send(`HI, ${user.username}`);
+      }
+    });
+  });
 });
 
 auth.post("/update/user", (req, res) => {
