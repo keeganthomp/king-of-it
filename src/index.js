@@ -15,7 +15,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:currentUser" component={Profile} />
         <Route path="/auth/login" component={LoginPage} />
         <Route path="/auth/signup" component={SignupPage} />
       </Switch>

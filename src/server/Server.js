@@ -4,6 +4,7 @@ const axios = require("axios");
 const cors = require("cors");
 const apiRoutes = require("./apiRoutes");
 const authRoutes = require("./authRoutes");
+const userRoutes = require("./userRoutes")
 const mongo = require("mongodb");
 const assert = require("assert");
 const bodyParser = require("body-parser");
@@ -22,6 +23,7 @@ server.use(
 );
 server.use("/api", apiRoutes);
 server.use("/auth", authRoutes);
+server.use('/user', userRoutes)
 server.use(cookieParser());
 
 server.listen(7000, () => {

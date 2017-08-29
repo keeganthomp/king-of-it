@@ -1,8 +1,9 @@
 import _ from "lodash";
-import { UPDATE_IMAGES, INITIAL_IMAGES, GET_ERRORS } from "../actions";
+import { UPDATE_IMAGES, INITIAL_IMAGES, GET_ERRORS, GET_CURRENT_USER } from "../actions";
 
 const initialState = {
   dailyChallenge: "The Daily Challenge",
+  user: [],
   images: [],
   hasErrored: undefined
 };
@@ -18,6 +19,11 @@ const reducer = (state = initialState, action) => {
     case UPDATE_IMAGES:
       newState.images.push(action.payload);
       return newState;
+    case GET_CURRENT_USER:
+      console.log("ACTION PAYLOAD", action.payload)
+      newState.user.push(action.payload)
+      console.log("userReducinggg")
+      return newState
     case GET_ERRORS:
       newState.hasErrored = action.payload;
       return newState;

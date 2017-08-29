@@ -64,20 +64,8 @@ auth.post("/login", (req, res) => {
       } 
       req.session.user = user;
       console.log(`Hi ${req.session.user.username}`)
-      res.redirect('http://localhost:5000/profile')
+      res.redirect(`http://localhost:5000/profile/${req.session.user.username}`)
     });
-  });
-});
-
-auth.post("/update/user", (req, res) => {
-  res.send({
-    message: "Signup Page!!"
-  });
-});
-
-auth.get("/login", (req, res) => {
-  res.send({
-    message: "Login Page!!"
   });
 });
 

@@ -3,6 +3,7 @@ import { store } from "../store";
 export const UPDATE_IMAGES = "UPDATE_IMAGES";
 export const GET_ERRORS = "GET_ERRORS";
 export const INITIAL_IMAGES = "INITIAL_IMAGES";
+export const GET_CURRENT_USER = "GET_CURRENT_USER";
 
 export const updateImages = image => {
   store.dispatch({
@@ -25,3 +26,11 @@ export const getErrors = err => {
     payload: err
   });
 };
+
+export const getCurrentUser = user => {
+    console.log("user action")
+  store.dispatch({
+    type: GET_CURRENT_USER,
+    payload: user
+  })
+}
