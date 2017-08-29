@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
+import Profile from './components/Profile'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/profile" component={Profile} />
         <Route path="/auth/login" component={LoginPage} />
         <Route path="/auth/signup" component={SignupPage} />
       </Switch>

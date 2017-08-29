@@ -8,23 +8,21 @@ const mongo = require("mongodb");
 const assert = require("assert");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
-const mongoose = require('mongoose');
-
-// const url = "mongodb://localhost:27017/tester"
+const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+var MongoStore = require("connect-mongo")(session);
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(cors());
 
-server.use("/api", apiRoutes);
-server.use("/auth", authRoutes);
 server.use(
   session({
-    secret: "Communism Vici Kimono",
-    resave: true,
-    saveUninitialized: true
+    secret: "Communism Vici Kimono"
   })
 );
+server.use("/api", apiRoutes);
+server.use("/auth", authRoutes);
+server.use(cookieParser());
 
 server.listen(7000, () => {
   console.log("running on port 7000");
