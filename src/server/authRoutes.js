@@ -4,9 +4,7 @@ const bodyParser = require("body-parser");
 const mongo = require("mongodb");
 const assert = require("assert");
 const session = require("express-session");
-const mongoose = require('mongoose');
-
-
+const mongoose = require("mongoose");
 
 const url = "mongodb://localhost:27017/tester";
 
@@ -45,7 +43,7 @@ auth.post("/signup", (req, res) => {
       db.close();
     });
   });
-  res.redirect("http://localhost:5000/");
+  res.redirect("http://localhost:5000/auth/login");
 });
 
 auth.post("/login", (req, res) => {
@@ -61,10 +59,14 @@ auth.post("/login", (req, res) => {
     }, (err, user) => {
       if (!user) {
         res.send("DOESNT EXISTTT");
-      } 
+      } else if (err) {
+        res.send(err);
+      }
       req.session.user = user;
-      console.log(`Hi ${req.session.user.username}`)
-      res.redirect(`http://localhost:5000/profile/${req.session.user.username}`)
+      console.log(`Hi ${req.session.user.username}`);
+      res.redirect(
+        `http://localhost:5000/profile/${req.session.user.username}`
+      );
     });
   });
 });
