@@ -27,5 +27,5 @@ server.use('/user', userRoutes)
 server.use(cookieParser());
 
 server.listen(7000, () => {
-  console.log("running on port 7000");
+  console.log("API running on port 7000");
 });

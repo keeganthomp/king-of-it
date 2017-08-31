@@ -32,7 +32,9 @@ auth.get("/users", (req, res) => {
 auth.post("/signup", (req, res) => {
   let user = {
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    points: 0,
+    challenges_completed: 0
   };
   console.log("REQ BODYYY:", req.body);
   mongo.connect(url, (err, db) => {
