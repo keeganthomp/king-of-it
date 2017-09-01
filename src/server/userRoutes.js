@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 user.get("/:user", (req, res) => {
   res.send(req.session);
-  console.log(":::::", req.session.user);
+  console.log(":::::", req.session);
 });
 
 module.exports = user;

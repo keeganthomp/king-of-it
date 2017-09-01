@@ -41,7 +41,6 @@ auth.post("/signup", (req, res) => {
     assert.equal(null, err);
     db.collection("user-data").insertOne(user, err => {
       assert.equal(null, err);
-      console.log("user inserted");
       db.close();
     });
   });
@@ -65,7 +64,10 @@ auth.post("/login", (req, res) => {
         res.send(err);
       }
       req.session.user = user;
+      req.session.balls = "balls";
+      req.session.save();
       console.log(`Hi ${req.session.user.username}`);
+      console.log("REQ SESSSIONN", req.session);
       res.redirect(
         `http://localhost:5000/profile/${req.session.user.username}`
       );

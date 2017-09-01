@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
     case GET_CURRENT_USER:
       console.log("ACTION PAYLOAD", action.payload)
       newState.user.push(action.payload)
-      console.log("userReducinggg")
+      console.log("userReducinggg with " + action.payload)
       return newState
     case GET_ERRORS:
       newState.hasErrored = action.payload;
