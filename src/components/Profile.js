@@ -9,25 +9,27 @@ class Profile extends Component {
     console.log("MOUNTED PROFILE");
     fetch("http://localhost:7000/auth/user")
       .then(response => response.json())
-      .then(userData => console.log("WOOOOOOOOO",userData))
-      .catch(err => console.log("ERRORRR",err));
+      .then(userData => getCurrentUser(userData.data.user))
+      .catch(err => console.log("ERRORRR", err));
   }
   render() {
     console.log("this propss", this.props);
     return (
       <div>
         <h1>Profile Page</h1>
-        <h2>HI {this.props.match.params.currentUser}</h2>
+        <h2>HI {this.props.user.username}</h2>
         <Link to={`/`}>
           <button>Home</button>
         </Link>
+        <p>Points Earned: {this.props.user.points}</p>
+        <p>Challenges Completed: {this.props.user.challenges_completed}</p>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return { user: state.user };
 };
 
 const mapDispatchToProps = dispatch => ({

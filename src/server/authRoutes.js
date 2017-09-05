@@ -63,7 +63,7 @@ auth.post("/login", (req, res) => {
     }, (err, user) => {
       currentUser = user;
       console.log("REQ SESSION", req.session);
-      res.redirect(`http://localhost:5000/profile/foo`);
+      res.redirect(`http://localhost:5000/profile/${user.username}`);
     });
   });
 });
