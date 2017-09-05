@@ -62,17 +62,16 @@ auth.post("/login", (req, res) => {
       password: user.password
     }, (err, user) => {
       currentUser = user;
-      console.log("CURRENT USER", currentUser);
+      console.log("REQ SESSION", req.session);
       res.redirect(`http://localhost:5000/profile/foo`);
     });
   });
 });
 
-auth.get("/setsession", (req, res) => {});
-
 auth.get("/:user", (req, res) => {
-  res.send({ data: currentUser });
-  console.log(":::::", currentUser);
+  req.session.user = currentUser;
+  res.send({ data: req.session });
+  console.log(":::::", req.session);
 });
 
 module.exports = auth;
