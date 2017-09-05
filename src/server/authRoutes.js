@@ -48,6 +48,7 @@ auth.post("/signup", (req, res) => {
 });
 
 auth.post("/login", (req, res) => {
+  let foundUser = false;
   let user = {
     username: req.body.loginUsername,
     password: req.body.loginPassword
@@ -58,21 +59,24 @@ auth.post("/login", (req, res) => {
       username: user.username,
       password: user.password
     }, (err, user) => {
-      if (!user) {
+      if (err) {
         res.send("DOESNT EXISTTT");
-      } else if (err) {
-        res.send(err);
+      } else {
+        foundUser = true;
+        res.redirect(`http://localhost:5000/profile/foo`);
       }
-      req.session.user = user;
-      req.session.balls = "balls";
-      req.session.save();
-      console.log(`Hi ${req.session.user.username}`);
-      console.log("REQ SESSSIONN", req.session);
-      res.redirect(
-        `http://localhost:5000/profile/${req.session.user.username}`
-      );
     });
   });
+  if (foundUser === true) {
+    console.log("USER EXISTT");
+    req.session.user = user;
+    console.log("REQ SESSSIONN", req.session);
+  }
+});
+
+auth.get("/:user", (req, res) => {
+  res.send({ data: req.session });
+  console.log(":::::", req.session);
 });
 
 module.exports = auth;

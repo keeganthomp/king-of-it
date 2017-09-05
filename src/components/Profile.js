@@ -7,7 +7,7 @@ import "../styles/App.css";
 class Profile extends Component {
   componentDidMount() {
     console.log("MOUNTED PROFILE");
-    fetch("http://localhost:7000/user/user")
+    fetch("http://localhost:7000/auth/user")
       .then(response => response.json())
       .then(userData => console.log("WOOOOOOOOO",userData))
       .catch(err => console.log("ERRORRR",err));
