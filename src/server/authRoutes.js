@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 
 const url = "mongodb://localhost:27017/tester";
 
+let currentUser = undefined;
+
 auth.get("/users", (req, res) => {
   let userArray = [];
   mongo.connect(url, (err, db) => {
@@ -59,24 +61,18 @@ auth.post("/login", (req, res) => {
       username: user.username,
       password: user.password
     }, (err, user) => {
-      if (err) {
-        res.send("DOESNT EXISTTT");
-      } else {
-        foundUser = true;
-        res.redirect(`http://localhost:5000/profile/foo`);
-      }
+      currentUser = user;
+      console.log("CURRENT USER", currentUser);
+      res.redirect(`http://localhost:5000/profile/foo`);
     });
   });
-  if (foundUser === true) {
-    console.log("USER EXISTT");
-    req.session.user = user;
-    console.log("REQ SESSSIONN", req.session);
-  }
 });
 
+auth.get("/setsession", (req, res) => {});
+
 auth.get("/:user", (req, res) => {
-  res.send({ data: req.session });
-  console.log(":::::", req.session);
+  res.send({ data: currentUser });
+  console.log(":::::", currentUser);
 });
 
 module.exports = auth;

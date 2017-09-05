@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+var MongoStore = require("connect-mongo")(session);
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(cors());
@@ -18,9 +19,12 @@ server.use(cors());
 server.use(cookieParser());
 server.use(
   session({
+    secret: "secret",
     resave: true,
-    secret: "123456",
-    saveUninitialized: true
+    saveUninitialized: false,
+    store: new MongoStore({
+      url: "mongodb://localhost:27017/tester"
+    })
   })
 );
 server.use("/api", apiRoutes);
